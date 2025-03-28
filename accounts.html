@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bán Account - SunNetWork Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #1a1a1a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+        }
+
+        /* Banner Styles */
+        .banner {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-bottom: 40px;
+        }
+
+        .banner h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            color: #ccc;
+        }
+
+        /* Account Cards Container */
+        .accounts-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Account Card Styles */
+        .account-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .account-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .account-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .account-info {
+            padding: 20px;
+        }
+
+        .account-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .account-details {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .account-details li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price {
+            color: #4CAF50;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .buy-button:hover {
+            background: #45a049;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="nav-container">
+            <a href="index.html">SunNetWork Shop</a>
+            <nav>
+                <a href="index.html">Trang Chủ</a>
+                <a href="caythue.html">Cày Thuê</a>
+                <a href="accounts.html">Bán Account</a>
+                <a href="gamepass.html">Game Pass</a>
+                <a href="#contact">Liên Hệ</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+        <h1>Bán Account Game</h1>
+        <p>Account game chất lượng, giá tốt</p>
+    </div>
+
+    <!-- Accounts Container -->
+    <div class="accounts-container">
+        <!-- Account 1 -->
+        <div class="account-card">
+            <img src="acc1.png" alt="Account 1" class="account-image">
+            <span class="badge">Hot</span>
+            <div class="account-info">
+                <h3 class="account-title">Acc Roblox #1</h3>
+                <ul class="account-details">
+                    <li>
+                        <span>Level:</span>
+                        <span>Max</span>
+                    </li>
+                    <li>
+                        <span>Items:</span>
+                        <span>6+ Swords</span>
+                        <span>2+ Guns</span>
+                    </li>
+                    <li>
+                        <span>Đặc Biệt:</span>
+                        <span>Venom Fruit/ Mamoth Fruit</span>
+                    </li>
+                </ul>
+                <div class="price">20,000đ</div>
+                <a href="order-form.html?service=Account VIP 1&price=20,000đ" class="buy-button">MUA NGAY</a>
+            </div>
+        </div>
+
+        <!-- Account 2 -->
+        <div class="account-card">
+            <img src="path_to_account2.jpg" alt="Account 2" class="account-image">
+            <span class="badge">New</span>
+            <div class="account-info">
+                <h3 class="account-title">Account VIP 2</h3>
+                <ul class="account-details">
+                    <li>
+                        <span></span>
+                        <span></span>
+                    </li>
+                    <li>
+                        <span></span>
+                        <span></span>
+                    </li>
+                    <li>
+                        <span></span>
+                        <span></span>
+                    </li>
+                </ul>
+                <div class="price">Hết Hàng( Chưa có )</div>
+                <a href="#" class="buy-button">MUA NGAY</a>
+            </div>
+        </div>
+
+        <!-- Account 3 -->
+        <div class="account-card">
+            <img src="path_to_account3.jpg" alt="Account 3" class="account-image">
+            <span class="badge">Sale</span>
+            <div class="account-info">
+                <h3 class="account-title">Account VIP 3</h3>
+                <ul class="account-details">
+                    <li>
+                        <span></span>
+                        <span></span>
+                    </li>
+                    <li>
+                        <span></span>
+                        <span></span>
+                    </li>
+                    <li>
+                        <span></span>
+                        <span></span>
+                    </li>
+                </ul>
+                <div class="price">Hết Hàng( Chưa có )</div>
+                <a href="#" class="buy-button">MUA NGAY</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="contact-info">
+            <h3>Liên Hệ Mua Game Pass</h3>
+            <p><i class="fas fa-phone"></i> Hotline: 0397.198.977</p>
+            <p><i class="fab fa-facebook"></i> Facebook: <a href="https://www.facebook.com/profile.php?id=61560419824346" target="_blank">SunNetWork Shop</a></p>
+            <p><i class="fab fa-facebook-messenger"></i> Zalo: 0397.198.977</p>
+            <p><i class="far fa-copyright"></i> © 2025 SunNetWork Shop. All rights reserved.</p>
+        </div>
+    </footer>
+    <audio autoplay loop>
+        <source src="vd.m4a" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Game Services</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            color: #ff4081;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff4081;
+            transform: scale(1.1);
+        }
+
+        .hero {
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+        }
+
+        .background-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero button {
+            background-color: #ff4081;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero button:hover {
+            background-color: #e73370;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .services {
+            padding: 50px 20px;
+            background-color: #1f1f1f;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-card h2 {
+            padding: 20px;
+            font-size: 1.5em;
+            color: #ff4081;
+        }
+
+        .service-card p {
+            padding: 0 20px 20px;
+            color: #ccc;
+        }
+
+        .buy-button {
+            background-color: #ff4081;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #e73370;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Sun NetWork Shop</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="caythue.html">Cày Thuê</a></li>
+            <li><a href="gamepass.html">Game Pass</a></li>
+            <li><a href="accounts.html">Bán Account</a></li>
+            <li><a href="index.html">Liên Hệ</a></li>
+        </ul>
+    </div>
+
+    <div class="hero">
+        <video autoplay muted loop class="background-video">
+            <source src="jjk.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+        <div class="hero-content">
+            <h1>Chào mừng đến với Sun NetWork Shop</h1>
+        </div>
+    </div>
+
+    <div class="services">
+        <div class="service-card">
+            <img src="caythue.png" alt="Dịch Vụ Cày Thuê">
+            <h2>Dịch Vụ Cày Thuê</h2>
+            <p>Cày thuê items, nhiệm vụ game uy tín</p>
+            <button class="buy-button" onclick="window.location.href='caythue.html'">Xem chi tiết</button>
+        </div>
+
+        <div class="service-card">
+            <img src="acc.png" alt="Bán Account Game">
+            <h2>Bán Account Game</h2>
+            <p>Account game đa dạng, giá tốt</p>
+            <button class="buy-button" onclick="window.location.href='accounts.html'">Xem chi tiết</button>
+        </div>
+
+        <div class="service-card">
+            <img src="gamepass.png" alt="Game Pass">
+            <h2>Game Pass</h2>
+            <p>Cung cấp game pass các loại</p>
+            <button class="buy-button" onclick="window.location.href='gamepass.html'">Xem chi tiết</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 SunNetWork. All rights reserved.</p>
+        <p>Hệ thống thường trực thuộc SunNetWork</p>
+    </footer>
+
+    <audio autoplay loop>
+        <source src="vd.m4a" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
+</body>
+</html> 

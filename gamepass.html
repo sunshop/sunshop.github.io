@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Pass - SunNetWork Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #1a1a1a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-container a:hover {
+            color: #4CAF50;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('path_to_gamepass_bg.jpg') center/cover;
+            z-index: -1;
+            animation: zoomBg 20s infinite alternate;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: slideDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            animation: fadeIn 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        /* Game Pass Cards Container */
+        .gamepass-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+        }
+
+        /* Game Pass Card */
+        .gamepass-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gamepass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .gamepass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .gamepass-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .gamepass-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gamepass-card:hover .gamepass-image {
+            transform: scale(1.1);
+        }
+
+        .gamepass-info {
+            padding: 25px;
+            position: relative;
+        }
+
+        .gamepass-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .gamepass-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #4CAF50;
+            transition: width 0.3s;
+        }
+
+        .gamepass-card:hover .gamepass-title::after {
+            width: 100%;
+        }
+
+        .gamepass-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .gamepass-price {
+            font-size: 1.8em;
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gamepass-price::before {
+            content: '💎';
+            font-size: 0.8em;
+        }
+
+        .buy-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .buy-button:hover::before {
+            left: 100%;
+        }
+
+        .buy-button:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .contact-info {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: #4CAF50;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #4CAF50;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomBg {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .gamepass-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="nav-container">
+            <a href="index.html">SunNetWork Shop</a>
+            <nav>
+                <a href="index.html">Trang Chủ</a>
+                <a href="caythue.html">Cày Thuê</a>
+                <a href="accounts.html">Bán Account</a>
+                <a href="gamepass.html">Game Pass</a>
+                <a href="#contact">Liên Hệ</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Game Pass</h1>
+            <p>Trải nghiệm game với giá tốt nhất</p>
+        </div>
+    </div>
+
+    <!-- Game Pass Cards -->
+    <div class="gamepass-container">
+        <!-- Game Pass 1 Tháng -->
+        <div class="gamepass-card">
+            <img src="fruitperm.png" alt="fruit" class="gamepass-image">
+            <div class="gamepass-info">
+                <h3 class="gamepass-title">Game Pass Fruit/Items</h3>
+                <p class="gamepass-description">Giá rẻ nhưng uy tín</p>
+                <div class="gamepass-price">IB Để Lấy Bảng Giá Chi Tiết</div>
+                <a href="order-form.html?service=Game Pass Fruit/Items&price=IB" class="buy-button">ĐẶT NGAY</a>
+            </div>
+        </div>
+
+        <!-- Game Pass 3 Tháng -->
+        <div class="gamepass-card">
+            <img src="scoll.png" alt="scoll" class="gamepass-image">
+            <div class="gamepass-info">
+                <h3 class="gamepass-title">Game Pass Scoll</h3>
+                <p class="gamepass-description">Rẻ những uy tín</p>
+                <div class="gamepass-price">IB Để Lấy Bảng Giá</div>
+                <a href="#" class="buy-button">ĐẶT NGAY</a>
+            </div>
+        </div>
+
+        <!-- Game Pass 6 Tháng -->
+        <div class="gamepass-card">
+            <img src="x2.png" alt="Game Pass x2 EXP" class="gamepass-image">
+            <div class="gamepass-info">
+                <h3 class="gamepass-title">Boots EXP</h3>
+                <p class="gamepass-description">Rẻ nhưng khuyến khích nên sài x2 code</p>
+                <div class="gamepass-price">IB Để Biết Giá Chi Tiết</div>
+                <a href="#" class="buy-button">ĐẶT NGAY</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="contact-info">
+            <h3>Liên Hệ Mua Game Pass</h3>
+            <p><i class="fas fa-phone"></i> Hotline: 0397.198,977</p>
+            <p><i class="fab fa-facebook"></i> Facebook: <a href="https://www.facebook.com/profile.php?id=61560419824346" target="_blank">SunNetWork Shop</a></p>
+            <p><i class="fab fa-facebook-messenger"></i> Zalo: 0397.198.977</p>
+            <p><i class="far fa-copyright"></i> © 2025 SunNetWork Shop. All rights reserved.</p>
+        </div>
+    </footer>
+    <audio autoplay loop>
+        <source src="vd.m4a" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
+</body>
+</html>

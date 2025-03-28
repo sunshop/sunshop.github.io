@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Vụ Cày Thuê - SunNetWork Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #1a1a1a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-container a:hover {
+            color: #4CAF50;
+        }
+
+        /* Info Bar */
+        .info-bar {
+            background: #f8f9fa;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-item i {
+            color: #4CAF50;
+        }
+
+        /* Main Banner */
+        .main-banner {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .main-banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .main-banner p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .service-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #4CAF50;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .buy-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .footer-section p {
+            margin: 10px 0;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .info-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        select:focus {
+            border-color: #ff4081;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 64, 129, 0.5);
+        }
+
+        .contact-section {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #ff4081;
+        }
+
+        .contact-section p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .contact-section a {
+            color: #ff4081;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-section a:hover {
+            color: #e73370;
+        }
+
+        .contact-section .icon {
+            margin-right: 10px;
+            color: #ff4081;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html">SunNetWork Shop</a>
+            <nav>
+                <a href="index.html">Trang Chủ</a>
+                <a href="caythue.html">Cày Thuê</a>
+                <a href="accounts.html">Bán Account</a>
+                <a href="gamepass.html">Game Pass</a>
+                <a href="#contact">Liên Hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Info Bar -->
+    <div class="info-bar">
+        <div class="info-container">
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <span>Hotline: 0397.198.977</span>
+            </div>
+            <div class="info-item">
+                <i class="fab fa-facebook"></i>
+                <a href="https://www.facebook.com/profile.php?id=61560419824346" target="_blank">Le Tuan Anh ( Yun Creator )</a></p>
+                
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <span>Hoạt động: 24/7</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Banner -->
+    <div class="main-banner">
+        <h1>Dịch Vụ Cày Thuê</h1>
+        <p>Đội ngũ cày thuê chuyên nghiệp, uy tín</p>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-container">
+        <div class="service-grid">
+            <!-- Farm Levels -->
+            <div class="service-card">
+                <h2 class="service-title">Farm Levels</h2>
+                <ul class="service-list">
+                    <li>
+                        <span>Lv 1 - 700</span>
+                        <span class="price">10,000đ</span>
+                    </li>
+                    <li>
+                        <span>Lv 700 - 1500</span>
+                        <span class="price">15,000đ</span>
+                    </li>
+                    <li>
+                        <span>Lv 1500 - Max</span>
+                        <span class="price">15,000đ</span>
+                    </li>
+                </ul>
+                <a href="order-form.html?service=Farm Levels&price=IB" class="buy-button">ĐẶT NGAY</a>
+            </div>
+
+            <!-- Raid -->
+            <div class="service-card">
+                <h2 class="service-title">Raid</h2>
+                <ul class="service-list">
+                    <li>
+                        <span>Raid Fruit Thường (Max Chiều)</span>
+                        <span class="price">10,000đ</span>
+                    </li>
+                    <li>
+                        <span>Raid Fruit Đặc Biệt (Max Chiều)</span>
+                        <span class="price">20,000đ</span>
+                    </li>
+                    <li>
+                        <span>Raid Kiếm Điểm F: 10k F</span>
+                        <span class="price">10,000đ</span>
+                    </li>
+                    <li>
+                        <span>Raid Kiếm Điểm F: 100k F</span>
+                        <span class="price">70,000đ</span>
+                    </li>
+                </ul>
+                <a href="order-form.html?service=Raid Fruit Thường&price=IB" class="buy-button">ĐẶT NGAY</a>
+            </div>
+
+            <!-- Nhiệm Vụ Items -->
+            <div class="service-card">
+                <h2 class="service-title">Nhiệm Vụ Items</h2>
+                <ul class="service-list">
+                    <li>
+                        <span>CDK</span>
+                        <span class="price">30,000đ (Bao 2 thanh)</span>
+                    </li>
+                    <li>
+                        <span>Soul Guitar</span>
+                        <span class="price">15,000đ - 20,000đ</span>
+                    </li>
+                    <li>
+                        <span>Ấn Đặt Ngay Để Biết Thêm</span>
+                    </li>
+                </ul>
+                <a href="order-form.html?service=Items&price=IB" class="buy-button">ĐẶT NGAY</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <h2 class="service-title">Perhistoric Island Items</h2>
+        <ul class="service-list">
+            <li>
+                <span>Trứng rồng</span>
+                <span class="price">10,000đ/1 quả</span>
+            </li>
+            <li>
+                <span>XươngXương</span>
+                <span class="price">20,000đ/40 xương</span>
+            </li>
+            <li>
+                <span>Mũ Dino Hood</span>
+                <span class="price">10,000đ</span>
+            </li>
+            <li>
+                <span>Items còn lại</span>
+                <span class="price">10,000đ</span>
+            </li>
+        </ul>
+        <a href="order-form.html?service=Perhistoric Island Quest&price=IB" class="buy-button">ĐẶT NGAY</a>
+    </div>
+
+
+    <div class="service-card">
+        <h2 class="service-title">Draco Quest</h2>
+        <ul class="service-list">
+            <li>
+                <span>Tộc Draco(Đã đủ đai)</span>
+                <span class="price">10,000đ</span>
+            </li>
+            <li>
+                <span>Tộc Draco(Bao gồm Full Quest)</span>
+                <span class="price">60,000đ</span>
+            </li>
+            <li>
+                <span>Tộc Draco V2</span>
+                <span class="price">10,000đ(Nếu Đã Có Tộc)/ 70,000đ(Nếu Chưa Có Tộc)</span>
+            </li>
+            <li>
+                <span>Tộc Draco V3</span>
+                <span class="price">20,000đ(Nếu Đã Có Tộc)/ 80,000đ(Nếu Chưa Có Tộc)</span>
+            </li>
+            <li>
+                <span>Dragon Storm</span>
+                <span class="price">30,000đ</span>
+            </li>
+            <li>
+                <span>Dragon Heart</span>
+                <span class="price">20,000đ</span>
+            </li>
+        </ul>
+        <a href="order-form.html?service=Draco Quests&price=IB" class="buy-button">ĐẶT NGAY</a>
+    </div>
+
+    <div class="service-card">
+        <h2 class="service-title">Melee</h2>
+        <ul class="service-list">
+            <li>
+                <span>Full bô võ V1(Đầy đủ)</span>
+                <span class="price">330,000đ</span>
+            </li>
+            <li>
+                <span>Full bộ võ V2(Đầy đủ)</span>
+                <span class="price">40,000đ</span>
+            </li>
+            <li>
+                <span>Võ Huyết Quỷ Thuật</span>
+                <span class="price">60,000đ</span>
+            </li>
+            <li>
+                <span>Võ God Human</span>
+                <span class="price">20,000đ</span>
+            </li>
+        </ul>
+        <a href="order-form.html?service=Melee&price=IB" class="buy-button">ĐẶT NGAY</a>
+    </div>
+
+    <div class="service-card">
+        <h2 class="service-title">Kiếm</h2>
+        <ul class="service-list">
+            <li>
+                <span>True Triple Katana(Trọn gói)</span>
+                <span class="price">60,000đ</span>
+            </li>
+            <li>
+                <span>Cursed Dual Katana(Trọn gói)</span>
+                <span class="price">35,000đ</span>
+            </li>
+            <li>
+                <span>Fox Lamp</span>
+                <span class="price">40,000đ</span>
+            </li>
+            <li>
+                <span>Shark Anchor(Full)</span>
+                <span class="price">30,000đ</span>
+            </li>
+            <li>
+                <span>IB Để Biết Thêm</span>
+                <span class="price"></span>
+            </li>
+        </ul>
+        <a href="order-form.html?service=Swords&price=IB" class="buy-button">ĐẶT NGAY</a>
+    </div>
+
+    <div class="service-card">
+        <h2 class="service-title">V4 Quest(Tộc thường)</h2>
+        <ul class="service-list">
+            <li>
+                <span>Lấy mảnh gương</span>
+                <span class="price">10,000đ</span>
+            </li>
+            <li>
+                <span>V4 Full Gear</span>
+                <span class="price">70,000đ</span>
+            </li>
+            <li>
+                <span>V1-V3</span>
+                <span class="price">10,000đ</span>
+            </li>
+            <li>
+                <span>1 Gear Đơn</span>
+                <span class="price">10,000đ</span>
+            </li>
+            <li>
+                <span>Tộc Cyborg</span>
+                <span class="price">25,000đ</span>
+            </li>
+            <li>
+                <span>Tộc Ghoul</span>
+                <span class="price">20,000đ</span>
+            </li>
+        </ul>
+        <a href="order-form.html?service=V4 Quest&price=IB" class="buy-button">ĐẶT NGAY</a>
+    </div>
+
+    <div class="service-card">
+        <h2 class="service-title">Mastery</h2>
+        <ul class="service-list">
+            <li>
+                <span>300 Mastery Đầu Tiên</span>
+                <span class="price">10,000đ</span>
+            </li>
+            <li>
+                <span>300 Mastery Cuối Cùng</span>
+                <span class="price">20,000đ</span>
+            </li>
+            <li>
+                <span>Full Mastery Trong 1 Lần Cày</span>
+                <span class="price">30,000đ</span>
+            </li>
+            <li>
+                <span>Những thứ khác IB để biết thêm</span>
+                <span class="price"></span>
+            </li>
+        </ul>
+        <a href="order-form.html?service=Mastery&price=IB" class="buy-button">ĐẶT NGAY</a>
+    </div>
+
+    <div class="service-card">
+        <h2 class="service-title">V4 Draco</h2>
+        <ul class="service-list">
+            <li>
+                <span>V4 Draco 1 Gear(Chưa đủ Items)</span>
+                <span class="price">70,000đ</span>
+            </li>
+            <li>
+                <span>V4 Draco 1 Gear(Thiếu 1 hoặc đủ Items)</span>
+                <span class="price">60,000đ</span>
+            </li>
+            <li>
+                <span>V4 Draco Full Gear</span>
+                <span class="price">90,000đ(Có thể thương lượng)</span>
+            </li>
+            <li>
+                <span>Kéo tim về Hydra</span>
+                <span class="price">60,000đ</span>
+            </li>
+        </ul>
+        <a href="order-form.html?service=V4 Draco&price=IB" class="buy-button">ĐẶT NGAY</a>
+    </div>
+    <div class="service-card">
+        <h2 class="service-title">Sea Events ( Sea Quest )</h2>
+        <ul class="service-list">
+            <li>
+                <span>Full Items NPC Beast Hunter ( Lấy lẻ từng Items IB Fanpage )</span>
+                <span class="price">60,000đ</span>
+            </li>
+            <li>
+                <span>Full Items NPC Shark Hunter ( Lấy lẻ từng Items IB Fanpage )</span>
+                <span class="price">30,000đ</span>
+            </li>
+            <li>
+                <span>Farm Vàng</span>
+                <span class="price">50 vàng/ 10,000đ</span>
+            </li>
+            <li>
+                <span>Leviathan</span>
+                <span class="price">1 Tim/ 50,000đ</span>
+            </li>
+            <li>
+                <span>Farm Items Teroshark</span>
+                <span class="price">30,000đ/ 20 Tero Eyes | 10,000đ/ 30 Mutant Tooth </span>
+            </li>
+        </ul>
+        <a href="order-form.html?service=Sea Events&price=IB" class="order-btn">ĐẶT NGAY</a>
+    </div>
+    <footer class="footer">
+        <div class="contact-info">
+            <h3>Liên Hệ Mua Game Pass</h3>
+            <p><i class="fas fa-phone"></i> Hotline: 0397.198.977</p>
+            <p><i class="fab fa-facebook"></i> Facebook: <a href="https://www.facebook.com/profile.php?id=61560419824346" target="_blank">SunNetWork Shop</a></p>
+            <p><i class="fab fa-facebook-messenger"></i> Zalo: 0397.198.977</p>
+            <p><i class="far fa-copyright"></i> © 2025 SunNetWork Shop. All rights reserved.</p>
+        </div>
+    </footer>
+    <audio autoplay loop>
+        <source src="vd.m4a" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
+</body>
+</html>
